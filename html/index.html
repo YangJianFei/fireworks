@@ -1,0 +1,46 @@
+<!--
+Filename: e:\huilder_code\vue-long-scroll1\html\yanhua.html
+Path: e:\huilder_code\vue-long-scroll1
+Created Date: Wednesday, January 26th 2022, 11:46:36 am
+Author: yang jian fei
+
+Copyright (c) 2022 瑞为
+-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>除夕炫彩</title>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        html,
+        body {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" style="position:absolute;width:100%;height:100%;z-index:8888"></canvas>
+    <canvas style="position:absolute;width:100%;height:100%;z-index:9999" class="canvas"></canvas>
+    <div class="overlay">
+        <div class="tabs">
+            <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span
+                    class="tabs-label">Share</span></div>
+
+            <div class="tabs-panels">
+                <ul class="tabs-panel commands">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/firework.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
