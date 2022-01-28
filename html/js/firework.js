@@ -7,7 +7,35 @@
  * Copyright (c) 2022 瑞为
  */
 
+let $audioPlay = document.getElementById('audio-play-coantin');
+let audioArr = document.getElementById('audio-contain').querySelectorAll('audio');
+let currentAudioIndex = 0, currentAudio;
+let isPlay = $audioPlay.classList.contains('play');
 
+
+if ('ontouchstart' in $audioPlay) {
+    $audioPlay.addEventListener('touchstart', onPlayClick);
+} else {
+    $audioPlay.addEventListener('click', onPlayClick);
+}
+
+window.onload = () => {
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        if (!isPlay) {
+            onPlayClick();
+        }
+    }, false);
+};
+
+function onPlayClick() {
+    $audioPlay.classList.toggle('stop');
+    $audioPlay.classList.toggle('play');
+    audioArr.forEach(audio => {
+        audio.play();
+        audio.pause();
+    });
+    isPlay = !isPlay;
+}
 
 function initVars() {
 
@@ -30,10 +58,6 @@ function initVars() {
         sparkPics.push(sparkPic);
     }
     sparks = new Array();
-    pow1 = new Audio(s + "pow1.ogg");
-    pow2 = new Audio(s + "pow2.ogg");
-    pow3 = new Audio(s + "pow3.ogg");
-    pow4 = new Audio(s + "pow4.ogg");
     frames = 0;
 }
 
@@ -130,15 +154,14 @@ function splode(x, y, z) {
         spark.trail = new Array();
         sparks.push(spark);
     }
-    switch (parseInt(Math.random() * 4)) {
-        case 0: pow = new Audio(s + "pow1.ogg"); break;
-        case 1: pow = new Audio(s + "pow2.ogg"); break;
-        case 2: pow = new Audio(s + "pow3.ogg"); break;
-        case 3: pow = new Audio(s + "pow4.ogg"); break;
+    if (isPlay) {
+        currentAudio = audioArr[currentAudioIndex % audioArr.length];
+        currentAudioIndex++;
+        currentAudio.currentTime = 0;
+        d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ));
+        currentAudio.volume = 1.5 / (1 + d / 10);
+        currentAudio.play();
     }
-    d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ));
-    pow.volume = 1.5 / (1 + d / 10);
-    pow.play();
 }
 
 function doLogic() {

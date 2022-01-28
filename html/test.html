@@ -1,0 +1,53 @@
+<!--
+Filename: e:\huilder_code\vue-long-scroll1\html\yanhua.html
+Path: e:\huilder_code\vue-long-scroll1
+Created Date: Wednesday, January 26th 2022, 11:46:36 am
+Author: yang jian fei
+
+Copyright (c) 2022 瑞为
+-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>除夕炫彩</title>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        html,
+        body {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn-start" style="font-size: 100px;">开始/暂停</div>
+    <audio id="voice" preload="true" loop="loop">
+        <source src="audio/pow1.mp3" />
+        <source src="audio/pow1.ogg" />
+    </audio>
+    <audio id="voice2" preload="true" loop="loop">
+        <source src="audio/pow2.mp3" />
+        <source src="audio/pow2.ogg" />
+    </audio>
+    <script>
+        let btnStart = document.getElementById('btn-start');
+        let audio = document.getElementById('voice');
+        let audio2 = document.getElementById('voice2');
+        btnStart.addEventListener('click', () => {
+            audio.play();
+            audio.pause();
+        });
+        setTimeout(() => {
+            audio.play();
+
+        }, 4000);
+
+    </script>
+</body>
+
+</html>
