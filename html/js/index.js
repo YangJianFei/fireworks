@@ -7,7 +7,8 @@
  * Copyright (c) 2022 瑞为
  */
 
-
+const CIRCLERADIUS = 1, CIRCLEGAP = 3, SCALERADIUS = 4;
+let dotColors = [255, 255, 255];
 
 var S = {
     init: function () {
@@ -321,7 +322,7 @@ S.Dot = function (x, y) {
     this.p = new S.Point({
         x: x,
         y: y,
-        z: 5,
+        z: CIRCLERADIUS,
         a: 1,
         h: 0
     });
@@ -329,7 +330,7 @@ S.Dot = function (x, y) {
     this.e = 0.07;
     this.s = true;
 
-    this.c = new S.Color(255, 255, 255, this.p.a);
+    this.c = new S.Color(...dotColors, this.p.a);
 
     this.t = this.clone();
     this.q = [];
@@ -429,7 +430,7 @@ S.Dot.prototype = {
 
 
 S.ShapeBuilder = (function () {
-    var gap = 13,
+    var gap = CIRCLEGAP,
         shapeCanvas = document.createElement('canvas'),
         shapeContext = shapeCanvas.getContext('2d'),
         fontSize = 500,
@@ -612,13 +613,13 @@ S.Shape = (function () {
 
                 if (dots[d].s) {
                     dots[d].move(new S.Point({
-                        z: Math.random() * 20 + 10,
+                        z: Math.random() * SCALERADIUS * 2 + SCALERADIUS,
                         a: Math.random(),
                         h: 18
                     }));
                 } else {
                     dots[d].move(new S.Point({
-                        z: Math.random() * 5 + 5,
+                        z: Math.random() * CIRCLERADIUS + CIRCLERADIUS,
                         h: fast ? 18 : 30
                     }));
                 }
@@ -628,7 +629,7 @@ S.Shape = (function () {
                     x: n.dots[i].x + cx,
                     y: n.dots[i].y + cy,
                     a: 1,
-                    z: 5,
+                    z: CIRCLERADIUS,
                     h: 0
                 }));
 
