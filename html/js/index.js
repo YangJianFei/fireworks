@@ -6,9 +6,20 @@
  * Desc: desc
  * Copyright (c) 2022 瑞为
  */
+let widthRate = window.outerWidth / 336;
 
-const CIRCLERADIUS = 1, CIRCLEGAP = 3, SCALERADIUS = 4;
+let CIRCLERADIUS = parseInt(widthRate), // 圆点半径 width = 336
+    CIRCLEGAP = parseInt(3 * widthRate),  // 圆点间隙
+    SCALERADIUS = parseInt(4 * widthRate);    // 放大的圆点半径
 let dotColors = [255, 255, 255];
+
+window.addEventListener("resize", () => {
+    widthRate = window.outerWidth / 336;
+    CIRCLERADIUS = parseInt(widthRate);
+    CIRCLEGAP = parseInt(3 * widthRate);
+    SCALERADIUS = parseInt(4 * widthRate);
+    S.ShapeBuilder = shapeBuilderFun();
+});
 
 var S = {
     init: function () {
@@ -428,8 +439,7 @@ S.Dot.prototype = {
     }
 }
 
-
-S.ShapeBuilder = (function () {
+let shapeBuilderFun = function () {
     var gap = CIRCLEGAP,
         shapeCanvas = document.createElement('canvas'),
         shapeContext = shapeCanvas.getContext('2d'),
@@ -557,7 +567,9 @@ S.ShapeBuilder = (function () {
             return { dots: dots, w: width, h: height };
         }
     };
-}());
+};
+
+S.ShapeBuilder = shapeBuilderFun();
 
 
 S.Shape = (function () {

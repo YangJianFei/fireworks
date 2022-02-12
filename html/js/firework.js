@@ -54,7 +54,8 @@ function initVars() {
     s = "https://cantelope.org/NYE/";
     for (i = 1; i <= 10; ++i) {
         sparkPic = new Image();
-        sparkPic.src = s + "spark" + i + ".png";
+        // sparkPic.src = s + "spark" + i + ".png";
+        // sparkPic.src = 'https://vp.reconova.com/vehicleAdmin/img/icon256.11113a99.png';
         sparkPics.push(sparkPic);
     }
     sparks = new Array();
@@ -291,8 +292,8 @@ function draw() {
                     }
                 }
             }
-            ctx.globalAlpha = sparks[i].alpha;
-            ctx.drawImage(sparks[i].img, point.x - size / 2, point.y - size / 2, size, size);
+            // ctx.globalAlpha = sparks[i].alpha;
+            // ctx.drawImage(sparks[i].img, point.x - size / 2, point.y - size / 2, size, size);
         }
     }
 }
