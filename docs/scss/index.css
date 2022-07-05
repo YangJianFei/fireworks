@@ -1,0 +1,140 @@
+/*
+ * Filename: e:\huilder_code\fireworks\html\scss\index.css
+ * Path: e:\huilder_code\fireworks\html\scss
+ * Created Date: Thursday, January 27th 2022, 5:31:09 pm
+ * Author: yang jian fei
+ * 
+ * Copyright (c) 2022 瑞为
+ */
+
+html,
+body {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+footer {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    left: 0;
+    font-size: 14px;
+    font-family: "楷体";
+    color: white;
+    z-index: 10010;
+}
+.tx-center {
+    text-align: center;
+}
+
+#audio-contain {
+    display: none;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+}
+#audio-play-coantin {
+    position: absolute;
+    right: 16px;
+    top: 25px;
+    z-index: 10010;
+}
+#audio-play-coantin #audio-play {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: url(../image/yinle-white.png);
+    background-size: 56%;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+}
+#audio-play-coantin.play s {
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    background: url(../image/yinle-white.png) no-repeat;
+    background-size: 100% 100%;
+    -webkit-animation: ani-music 2s ease-out infinite;
+    animation: ani-music 2s ease-out infinite;
+    opacity: 0;
+}
+#audio-play-coantin .music1,
+#audio-play-coantin .music2,
+#audio-play-coantin .music3 {
+    position: relative;
+    display: block;
+    animation-duration: 2s;
+}
+#audio-play-coantin .music1 {
+    transform: rotate(0);
+}
+#audio-play-coantin .music2 {
+    transform: rotate(36deg);
+}
+#audio-play-coantin .music3 {
+    transform: rotate(45deg);
+}
+#audio-play-coantin .music1 s {
+    animation-delay: 0.3s;
+}
+#audio-play-coantin .music2 s {
+    animation-delay: 0.9s;
+}
+#audio-play-coantin .music3 s {
+    animation-delay: 1.9s;
+}
+@keyframes ani-music {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    30% {
+        transform: translate(-10px, -10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-20px, -20px);
+        opacity: 0;
+    }
+}
+
+.triangle i {
+    position: absolute;
+    bottom: 7px;
+    right: 6px;
+    display: inline-block;
+    width: 5px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    transition: all 0.5s ease-out;
+}
+
+.triangle #line1 {
+    transform: rotate(45deg) translateX(-1px);
+}
+.triangle #line2 {
+    transform: rotate(90deg) translateY(2px);
+    width: 8px;
+}
+.triangle #line3 {
+    transform: rotate(-45deg) translateX(-2px);
+}
+#audio-play-coantin.play .triangle #line1 {
+    transform: rotate(90deg) translateY(-2px);
+    width: 8px;
+}
+#audio-play-coantin.play .triangle #line2 {
+    opacity: 0;
+}
+#audio-play-coantin.play .triangle #line3 {
+    transform: rotate(-90deg) translateY(-2.5px);
+    width: 8px;
+}
