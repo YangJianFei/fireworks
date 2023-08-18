@@ -32,7 +32,8 @@ var S = {
         if (i !== -1) {
             S.UI.simulate(decodeURI(action).substring(i + 3));
         } else {
-            S.UI.simulate('新年快乐');
+            const search = window.location?.search?.split?.('=');
+            S.UI.simulate(search?.[1] ? search[1] : '铁子生日快乐');
         }
 
         S.Drawing.loop(function () {
