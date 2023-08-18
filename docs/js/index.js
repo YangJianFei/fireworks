@@ -33,7 +33,7 @@ var S = {
             S.UI.simulate(decodeURI(action).substring(i + 3));
         } else {
             const search = window.location?.search?.split?.('=');
-            S.UI.simulate(search?.[1] ? search[1] : '铁子生日快乐');
+            S.UI.simulate(search?.[1] ? decodeURIComponent(search[1]) : '铁子生日快乐');
         }
 
         S.Drawing.loop(function () {
